@@ -1,16 +1,21 @@
-const {mongoose} = require('mongoose');
+const mongoose = require('mongoose');
 
 //createing the model schema for the url shortener
 const urlSchema = new mongoose.Schema({
-  _id:Number,
-    OriginalUrl:{
+  numericId: {
+    type: Number,
+    required: true,
+    unique: true
+  },
+  originalUrl:{
         type:String,
         required:true,
         unique:true
     },
-    shortcode:{
+    shortCode:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     clickCount:{
         type:Number,

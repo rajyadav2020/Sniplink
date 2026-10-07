@@ -1,6 +1,7 @@
 module.exports = (err,req,res,next)=>{
-  console.log(err);
-  res.status(500).json({
-    message : err.message
+  const status = err.statusCode || err.status || (err.name === 'ValidationError' ? 400 : err.code === 11000 ? 409 : 500);
+  if (status >= 500) console.error(err);
+  res.status(status).json({
+    message : status === 409 ? 'A URL or short code already exists' : err.message
   })
 }

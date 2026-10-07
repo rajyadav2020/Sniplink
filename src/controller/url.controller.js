@@ -27,3 +27,13 @@ exports.redirectUrl = async(req, res, next) => {
         next(error)
     }
 }
+
+exports.getClickStats = async (req, res, next) => {
+    try{
+        const result = await urlService.getClickStats(req.params.code);
+        res.json(result);
+    }
+    catch(error){
+        next(error);
+    }   
+}
