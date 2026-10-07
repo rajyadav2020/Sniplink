@@ -11,7 +11,7 @@ client.on('error', (err) => {
 
 const connectRedis = async ()=>{
   await client.connect();
-  consoleq.log("redis connected");
+  console.log("redis connected");
 }
 
 module.exports = connectRedis;

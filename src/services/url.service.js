@@ -1,6 +1,7 @@
 const repository = require('../respository/url.repository');
 const base62 = require('../utils/base62');
-const { client } = require('../config/redis.config');
+// const { client } = require('../config/redis.config');
+const {client} = require('../config/redis');
 
 // Create short URL
 exports.createShortUrl = async (originalUrl) => {
@@ -10,13 +11,9 @@ exports.createShortUrl = async (originalUrl) => {
     }
 
     const id = await repository.create(originalUrl);
-
     console.log('Generated ID:', id);
-
     const shortcode = base62.encode(id);
-
     console.log('Short code generated:', shortcode);
-
     await repository.updatedCode(id, shortcode);
 
     return {

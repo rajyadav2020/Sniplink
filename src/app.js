@@ -27,7 +27,7 @@ app.get("/health", (req, res) => {
 });
 
 // Error Handler
-const errorMiddleware = require("./middlewares/error.middleware");
+const errorMiddleware = require("./middleware/error.middleware");
 app.use(errorMiddleware);
 
 module.exports = app;
